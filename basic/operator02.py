@@ -49,4 +49,3 @@ print(p2)
 
 print(p.upper()) #대문자변환
 print(p2.lower()) #소문자변환
-
