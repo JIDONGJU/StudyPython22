@@ -7,8 +7,6 @@ print(first, second) #CONCAT과 동일
 
 print(first * 3) #문자열연산 +,* 밖에 없음
 
-print(first  3)
-
 # 문자열 길이 내장함수
 print(len('한글'))
 print(len(first))
