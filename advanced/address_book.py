@@ -88,7 +88,7 @@ def del_contact(list_contact, name):
 
 
 # 주소록 파일DB 저장
-def save_contact(list_contact):
+def save_contact(list_contact:list):
     f = open('./advanced/db_contact.txt', mode = 'w', encoding='utf-8')
     for contact in list_contact:
         f.write(contact.name + '/')
@@ -99,7 +99,7 @@ def save_contact(list_contact):
     f.close()
 
 # 주소록 파일DB 로드
-def load_contact(list_contact):
+def load_contact(list_contact:list):
     f = open('./advanced/db_contact.txt', mode = 'r', encoding='utf-8')
     while True:
         line = f.readline()
