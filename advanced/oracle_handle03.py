@@ -1,5 +1,4 @@
 # DB연동 - INSERT INTO
-
 import cx_Oracle as ora
 
 def myconn():
@@ -17,8 +16,8 @@ def get_list(conn):
 
 def set_list(conn, tup):
     cur = conn.cursor()
-    query = f"INSERT INTO divtbl VALUES ('{tup[0]}', '{tup[1]}')" #SQL inject 보안문제+사용효율성
-    cur.execute(query)
+    query = "INSERT INTO divtbl VALUES (:1, :2)" #SQL Inject 보안문제+사용효율성
+    cur.execute(query, tup)
     conn.commit() # 완전 저장
     cur.close()
     conn.close()
@@ -26,10 +25,10 @@ def set_list(conn, tup):
 if __name__ == '__main__':
     print('DIVTBL데이터 조회')
     get_list(myconn())
-    print('DIVTBL 신규입력')
+    print('DIVTBL 신규 입력')
     division, names = input('(division, names) 입력 (구분자 \' \') > ').split(' ')
     tup = (division, names)
     set_list(myconn(), tup)
 
-    print('입력 후 DIVTBL 데이터 조회')
+    print('입력후 DIVTBL데이터 조회')
     get_list(myconn())
