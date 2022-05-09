@@ -1,10 +1,7 @@
 # StudyPython22
 2022 빅데이터 분석 과정 - 파이썬 기초 학습
 
-![파이썬](./image/python_logo.png)
-<!-- 
-<img src='./image/python_logo.png' />  
--->
+![python_logo](https://user-images.githubusercontent.com/104615410/167456751-df2bf6b3-d75f-4f76-a642-620bb9bb640e.png)
 
 ## 1일차
 - 파이썬 개발환경
