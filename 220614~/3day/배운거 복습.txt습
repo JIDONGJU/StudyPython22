@@ -1,0 +1,25 @@
+# 컬럼명으로 추출하기
+df[df['column']=='value']
+
+# 가장 기본 그래프
+plt.plot(df['xlabel'], df['ylabel']
+plt.show()
+
+# 그래프 크기 조정 x=너비 y=높이
+plt.figure(figsize = (x, y))
+
+# 그래프 전체 제목 넣기
+plt.title("")
+
+# x축, y축 이름 넣기
+plt.xlabel("")
+plt.ylabel("")
+
+# x축 눈금 설정
+plt.xticks("")
+
+# 내림차순 상위 5개 조회 (모든열)
+df.sort_values(by='column', ascending=False).head()
+
+# 내림차순 상위 5개 조회 (지정열)
+df.pivot_table(values = '열', index = '행', aggfunc = '결과값').sort_values(by='열', ascending = False).head(5)
