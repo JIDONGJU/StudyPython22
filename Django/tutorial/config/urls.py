@@ -20,6 +20,10 @@ from testapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 홈페이지 주소 뒤에 붙는거
+    # view : 바로 보여주기
+    # include : ~app.urls의 내용을 실행해라
+    # views에서 함수를 만들고 urls에서 실행? 보여주기 만들고 여기와서 연결점 만들기
     path('index1/', views.index1),
     path('index2/', views.index2),
     path('first/',include('testapp.urls')),
