@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from testapp.models import Curriculum
 from .models import Curriculum
+from .models import Course
 
 
 def index1(request):
@@ -43,28 +44,3 @@ def oneshow(request):
     onedata = Curriculum.objects.get(pk=2)
     
     return HttpResponse(onedata.name)
-
-def show2(request):
-    return render(
-        request,
-        "firstapp/show2.html",
-        {}
-    )
-    
-def show3(request):
-    data= Curriculum.objects.all()
-    
-    return render(
-        request,
-        "firstapp/show3.html",
-        {"data":data}
-    )
-    
-def show4(request):
-    data= Curriculum.objects.all()
-    
-    return render(
-        request,
-        "firstapp/show4.html",
-        {"data":data}
-    )

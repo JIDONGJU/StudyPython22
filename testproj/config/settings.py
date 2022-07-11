@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 # Update..
 INSTALLED_APPS = [
-    'secondapp',
     'testapp',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -107,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Update..
 LANGUAGE_CODE = 'ko-kr'
 # Update..
-TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'Asia-Seoul'
 
 USE_I18N = True
 

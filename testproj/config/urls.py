@@ -19,7 +19,9 @@ from django.urls import include, path
 from testapp import views
 
 urlpatterns = [
+    path('oneshow/', views.oneshow),
+    path('show/', views.show),
+    path('insert/', views.insert),
     path('admin/', admin.site.urls),
     path('test/', include("testapp.urls")),
-    path('second/', include("secondapp.urls")),
 ]
