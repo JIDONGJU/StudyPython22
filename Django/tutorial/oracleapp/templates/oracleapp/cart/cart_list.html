@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>회원 전체 조회.</title>
+</head>
+
+<body>
+    <p>회원 전체</p>
+    <table border="1">
+        <tr style="background-color: yellow;">
+            <th>회원ID</th>
+            <th>주문번호</th>
+            <th>상품코드</th>
+            <th>수량</th>
+        </tr>
+        {% for cols in df %}
+        <tr>
+            {% for data in cols %}
+            <td>{{data}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

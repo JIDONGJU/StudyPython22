@@ -50,7 +50,7 @@ def show2(request):
         "firstapp/show2.html",
         {}
     )
-    
+
 def show3(request):
     data= Curriculum.objects.all()
     
@@ -59,7 +59,7 @@ def show3(request):
         "firstapp/show3.html",
         {"data":data}
     )
-    
+
 def show4(request):
     data= Curriculum.objects.all()
     
@@ -68,3 +68,16 @@ def show4(request):
         "firstapp/show4.html",
         {"data":data}
     )
+
+# 수정하기
+def update(request) :
+    data = Curriculum.objects.get(pk=1)
+    data.name = "linux_update"
+    data.save()
+    return HttpResponse("수정 성공")
+
+# 삭제하기
+def delete(request):
+    data = Curriculum.objects.get(pk=1)
+    data.delete()
+    return HttpResponse("삭제 성공")

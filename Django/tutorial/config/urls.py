@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', include("testapp.urls")),
     path('second/', include("secondapp.urls")),
+    path('oracle/', include("oracleapp.urls")),
 ]

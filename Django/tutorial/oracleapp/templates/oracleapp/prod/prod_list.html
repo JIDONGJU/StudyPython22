@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>상품 전체 조회.</title>
+</head>
+
+<body>
+    <p>상품 전체</p>
+    <table border="1">
+        <tr style="background-color: yellow;">
+            <th>순서</th>
+            <th>상품분류코드</th>
+            <th>상품분류명</th>
+        </tr>
+        {% for cols in df %}
+        <tr>
+            {% for data in cols %}
+            <td>{{data}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
