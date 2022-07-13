@@ -33,6 +33,21 @@ def getMemberList():
     
     row = cursor.fetchall()
     
+    # 컬럼명 조회하기
+    colname = cursor.description
+    col = []
+    
+    for i in colname:
+        col.append(i[0])
+
+    list_row = []
+    
+    for tup in row:
+        dict_row = {}
+        for i in range(0,len(tup),1):
+            dict_row[col[i].lower()] = tup[i]
+        list_row.append(dict_row)
+    
     dbClose(cursor, conn)
     
     return row

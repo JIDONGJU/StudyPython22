@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Lprod 페이지 입니다.</title>
+</head>
+
+<body>
+    <p>Lprod 읽어 들이기</p>
+    <table border="1">
+        <tr style="background-color: lightblue;">
+            <th>Lprod_id</th>
+            <th>Lprod_gu</th>
+            <th>Lprod_nm</th>
+        </tr>
+        {% for d in df %}
+        <tr>
+            <td>{{d.lprod_id}}</td>
+            <td>{{d.lprod_gu}}</td>
+            <td>
+                <a href="http://127.0.0.1:8000/second/lprod?lprod_gu={{d.lprod_gu}}">{{d.lprod_nm}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

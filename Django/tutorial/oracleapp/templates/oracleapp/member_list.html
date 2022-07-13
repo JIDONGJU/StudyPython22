@@ -28,11 +28,29 @@
             <th>마일리지</th>
             <th>삭제여부</th>
         </tr>
-        {% for cols in df %}
+        {% for d in df %}
         <tr>
-            {% for data in cols %}
-            <td>{{data}}</td>
-            {% endfor %}
+            <td>
+                <a href = "http://127.0.0.1:8000/oracle/member?mem_id={{d.mem_id}}">{{d.mem_id}}</a>
+            </td>
+            <td>{{d.MEM_PASS}}</td>
+            <td>{{d.MEM_NAME}}</td>
+            <td>{{d.MEMMEM_REGNO1_ID}}</td>
+            <td>{{d.MEM_REGNO2}}</td>
+            <td>{{d.MEM_BIR}}</td>
+            <td>{{d.MEM_ZIP}}</td>
+            <td>{{d.MEM_ADD1}}</td>
+            <td>{{d.MEM_ADD2}}</td>
+            <td>{{d.MEM_HOMETEL}}</td>
+            <td>{{d.MEM_COMTEL}}</td>
+            <td>{{d.MEM_HP}}</td>
+            <td>{{d.MEM_MAIL}}</td>
+            <td>{{d.MEM_JOB}}</td>
+            <td>{{d.MEM_LIKE}}</td>
+            <td>{{d.MEM_MEMORIAL}}</td>
+            <td>{{d.MEM_MEMORIALDAY}}</td>
+            <td>{{d.MEM_MILEAGE}}</td>
+            <td>{{d.MEM_DELETE}}</td>
         </tr>
         {% endfor %}
     </table>

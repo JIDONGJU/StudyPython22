@@ -1,8 +1,3 @@
-# 1. M 함수이름 getProdList
-# 2. V view_prod_list()
-# 3. T prod_list.html
-# 4. urls에서 prod_list 만들고 2번 호출
-
 import pandas
 import cx_Oracle
 
@@ -25,15 +20,13 @@ def dbClose(cursor, conn):
     cursor.close()
     # 마지막에 접속정보 반납
     conn.close()
-    
-###### <실제 사용하는 함수> ######
 
 # 상품구매 전체 리스트 조회
-def getMemberList():
+def getLprodList():
     conn = getConnection()
     cursor = getCursor(conn)
     
-    sql = """ SELECT * FROM MEMBER """
+    sql = """ SELECT * FROM LPROD """
     cursor.execute(sql)
     
     row = cursor.fetchall()
@@ -56,3 +49,36 @@ def getMemberList():
     dbClose(cursor, conn)
     
     return list_row
+
+# 한건 행에 대한 딕셔너리 만드는 함수
+def getDictType_FetchOne(col_name,row_one):
+    dict_row = {}
+    
+    for i in range(0,len(row_one),1):
+        dict_row[col_name[i].lower()] = row_one[i]
+        
+    return dict_row
+
+
+# 상품구매 상세조회~1건조회
+def getLprod(gu):
+    conn = getConnection()
+    cursor = getCursor(conn)
+    
+    sql = """SELECT * FROM LPROD
+            WHERE LPROD_GU = :LPROD_GU"""
+    cursor.execute(sql, LPROD_GU=gu)
+    
+    row = cursor.fetchone()
+    
+    # 컬럼명 조회하기
+    colname = cursor.description
+    col = []
+    for i in colname:
+        col.append(i[0])
+    
+    dict_row = getDictType_FetchOne(col,row)
+    
+    dbClose(cursor, conn)
+    
+    return dict_row
