@@ -136,7 +136,7 @@ def setCartInsert(id, prod, qty):
     
     dbClose(cursor, conn)
     
-    return "입력 성공..."
+    return "Y"
 
 # 주문내역 입력하기
 def setCartDelete(no, prod):
@@ -156,7 +156,7 @@ def setCartDelete(no, prod):
     
     dbClose(cursor, conn)
     
-    return "삭제 성공..."
+    return "Y"
 
 # 주문내역 수정하기
 def setCartUpdate(no, prod, qty):
@@ -179,3 +179,4 @@ def setCartUpdate(no, prod, qty):
     dbClose(cursor, conn)
     
     return "Y"
+

@@ -15,8 +15,8 @@
 
 <body>
     <form name="fm" id="fm" method="post" action="/oracle/cart_update/">
-        <input type="hidden" name="cart_no" value="{{pcart_no}}">
-        <input type="hidden" name="cart_prod" value="{{pcart_prod}}"> {% csrf_token %}
+        <input type="hidden" name="pcart_no" value="{{pcart_no}}">
+        <input type="hidden" name="pcart_prod" value="{{pcart_prod}}"> {% csrf_token %}
         <p>주문 상세 수정</p>
 
         <table border="1">
