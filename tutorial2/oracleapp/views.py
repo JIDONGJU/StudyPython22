@@ -6,6 +6,9 @@ from .model_pandas import cart
 from .model_pandas import lprod
 from .model_pandas import login
 
+# 페이지 처리 라이브러리
+from django.core.paginator import Paginator
+
 # Create your views here.
 def test(request):
     
@@ -72,6 +75,72 @@ def view_Cart_List_dict(request):
     return render(
         request,
         "oracleapp/cart/cart_list_dict.html",
+        context
+    )
+    
+    
+# 주문내역 전체조회 페이지처리
+def view_Cart_List_Page(request):
+    
+    # 페이지 처리 시작 >>>>>
+    # page = request.GET.get("page", "1")
+    
+    try :
+        now_page = request.GET.get("page")
+        now_page = int(now_page)
+        
+    except :
+        now_page = 1
+    #페이지 처리 끝 <<<<<
+        
+    # 모델조회
+    df_list = cart.getCartList()
+    
+    # 페이지 처리 시작 >>>>>>
+    # - 첫번째 값 : 모델 조회한 데이터
+    # - 두번째 값 : 한 페이지에 보여줄 행의 갯수
+    p = Paginator(df_list, 10)
+    
+    # 사용할 데이터 추출
+    info = p.get_page(now_page)
+    
+    # 시작 페이지 번호
+    start_page = (now_page - 1) // 10 * 10 + 1
+    # 마지막 페이지 번호
+    end_page   = start_page + 9
+    
+    # p.num_pages : 전체 페이지 수
+    # end_page    : 계산에 의한 페이지 수(10 단위 계산)
+    # 전체 페이지 수보다 크다면,
+    # 전체 페이지 수로 변경
+    if end_page > p.num_pages :
+        end_page = p.num_pages
+    
+    # 이전 페이지 가기    
+    is_prev = False
+    # 다음 페이지 가기
+    is_next = False
+    
+    # 이전/다음 체크하기
+    if start_page > 1 :
+        is_prev = True
+        
+    if end_page < p.num_pages :
+        is_next = True
+    
+    # 페이지 처리 끝 <<<<<<
+    
+    # page_control/cart_list_page.html   
+    #context = {"df_list" : df_list}
+    context = {"info" : info,
+               "page_range" : range(start_page, end_page + 1),
+               "is_prev"    : is_prev,
+               "is_next"    : is_next,
+               "start_page" : start_page,
+               "end_page"   : end_page}
+    return render(
+        request,
+        "oracleapp/page_control/cart_list_page.html",
         context
     )
     
@@ -231,6 +300,72 @@ def view_Lprod_List(request):
         context
     )
     
+# 주문내역 전체조회 페이지처리
+def view_Lprod_List_Page(request):
+    
+    # 페이지 처리 시작 >>>>>
+    # page = request.GET.get("page", "1")
+    
+    try :
+        now_page = request.GET.get("page")
+        now_page = int(now_page)
+        
+    except :
+        now_page = 1
+    #페이지 처리 끝 <<<<<
+        
+    # 모델조회
+    df_list = lprod.getLprodList()
+    
+    # 페이지 처리 시작 >>>>>>
+    # - 첫번째 값 : 모델 조회한 데이터
+    # - 두번째 값 : 한 페이지에 보여줄 행의 갯수
+    p = Paginator(df_list, 4)
+    
+    # 사용할 데이터 추출
+    info = p.get_page(now_page)
+    
+    # 시작 페이지 번호
+    start_page = (now_page - 1) // 10 * 10 + 1
+    # 마지막 페이지 번호
+    end_page   = start_page + 9
+    
+    # p.num_pages : 전체 페이지 수
+    # end_page    : 계산에 의한 페이지 수(10 단위 계산)
+    # 전체 페이지 수보다 크다면,
+    # 전체 페이지 수로 변경
+    if end_page > p.num_pages :
+        end_page = p.num_pages
+    
+    # 이전 페이지 가기    
+    is_prev = False
+    # 다음 페이지 가기
+    is_next = False
+    
+    # 이전/다음 체크하기
+    if start_page > 1 :
+        is_prev = True
+        
+    if end_page < p.num_pages :
+        is_next = True
+    
+    # 페이지 처리 끝 <<<<<<
+    
+    # page_control/cart_list_page.html   
+    #context = {"df_list" : df_list}
+    context = {"info" : info,
+               "page_range" : range(start_page, end_page + 1),
+               "is_prev"    : is_prev,
+               "is_next"    : is_next,
+               "start_page" : start_page,
+               "end_page"   : end_page}
+    return render(
+        request,
+        "oracleapp/page_control/lprod_list_page.html",
+        context
+    )
+    
+    
 # 상품분류 상세조회
 def view_Lprod(request) :
     
@@ -327,3 +462,5 @@ def set_logout(request):
                         location.href = '/oracle/login_form/'
                     </script>"""
         return HttpResponse(context)
+    
+
