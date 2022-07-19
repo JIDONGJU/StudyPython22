@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 # Update.....
 INSTALLED_APPS = [
+    'chi2app',
     'frontendapp',
     'oracleapp',
     'secondapp',
