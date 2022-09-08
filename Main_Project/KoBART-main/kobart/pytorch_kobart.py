@@ -25,7 +25,6 @@ import os
 import shutil
 from zipfile import ZipFile
 from transformers import PreTrainedTokenizerFast
-
 from kobart import download
 
 
