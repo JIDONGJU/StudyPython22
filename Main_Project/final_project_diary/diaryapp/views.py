@@ -59,7 +59,7 @@ import json
 def main_login(request):
     # 날씨 api 
     city = "busan" #도시
-    apiKey = ""
+    apiKey = "de5d815cf642e5462143411f2568f1e7"
     lang = 'kr' #언어
     units = 'metric' #화씨 온도를 섭씨 온도로 변경
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&lang={lang}&units={units}"
@@ -78,7 +78,7 @@ def main_login(request):
 def main_logout(request):
     # 날씨 api 
     city = "busan" #도시
-    apiKey = ""
+    apiKey = "de5d815cf642e5462143411f2568f1e7"
     lang = 'kr' #언어
     units = 'metric' #화씨 온도를 섭씨 온도로 변경
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&lang={lang}&units={units}"
@@ -350,7 +350,7 @@ def login_lib(request):
 def getlogin(request):
     # 날씨 api 
     city = "busan" #도시
-    apiKey = ""
+    apiKey = "de5d815cf642e5462143411f2568f1e7"
     lang = 'kr' #언어
     units = 'metric' #화씨 온도를 섭씨 온도로 변경
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&lang={lang}&units={units}"
