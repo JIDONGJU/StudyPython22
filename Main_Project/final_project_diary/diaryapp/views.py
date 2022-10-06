@@ -53,30 +53,6 @@ import json
 
 
 
-# 권한 인증 및 토큰 확인
-SCOPES = ['https://www.googleapis.com/auth/drive']
-creds = None
-
-# 이미 발급받은 Token이 있을 때
-if os.path.exists('token.pickle'):
-    with open('token.pickle', 'rb') as token:
-        creds = pickle.load(token)
-
-# 발급받은 토큰이 없거나 AccessToken이 만료되었을 때
-if not creds or not creds.valid:
-    if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
-    else:
-        flow = InstalledAppFlow.from_client_secrets_file('client_secret_409110897522-us6mqpa0bt0kp0pk69u299brnrdi114j.apps.googleusercontent.com.json', SCOPES)
-        creds = flow.run_local_server(port=0)
-# 현재 토큰 정보를 저장
-    with open('token.pickle', 'wb') as token:
-        pickle.dump(creds, token)
-
-# 연결 인스턴스 생성
-service = build('drive', 'v3', credentials=creds)
-
-
 
 # Create your views here.
 # 메인
@@ -513,16 +489,11 @@ def set_Diary_Insert(request):
                 # return HttpResponse("Insert OK")
                 
                 if fm == "OK" :
-                    file = open("./text/test.txt", "w",encoding="UTF-8") 
+                    file = open("G:/내 드라이브/diary/test.txt", "w",encoding="UTF-8") 
                     file.write(pcontents)
                     
                     file.close()
-                    ## 파일 구글 드라이브에 업로드
-                    from googleapiclient.http import MediaFileUpload
-                    folder_id = "1lnyKZapdzBuszw-qEt_07zd7ID1bA6De" # 저장하고 싶은 드라이브의 폴더 위치에 들어가서 https://drive.google.com/drive/folders/<<<여기에 있는 주소 복사 >>>
-                    request_body = {'name': 'test.txt', 'parents': [folder_id]} # 업로드할 파일의 정보 정의(이름)
-                    media = MediaFileUpload('./text/test.txt') # 업로드할 파일 (위치 포함)
-                    file = service.files().create(body=request_body,media_body=media).execute()
+
                     
                     pageControl = """<script>
                                         alert('일기 등록이 완료 되었습니다.')
@@ -583,16 +554,11 @@ def set_voice_Diary_Insert(request):
                 # return HttpResponse("Insert OK")
                 
                 if fm == "OK" :
-                    file = open("./text/test.txt", "w",encoding="UTF-8") 
+                    file = open("G:/내 드라이브/diary/test.txt", "w",encoding="UTF-8") 
                     file.write(pcontents)
                     
                     file.close()
-                    ## 파일 업로드
-                    from googleapiclient.http import MediaFileUpload
-                    folder_id = "1lnyKZapdzBuszw-qEt_07zd7ID1bA6De" # 저장하고 싶은 드라이브의 폴더 위치에 들어가서 https://drive.google.com/drive/folders/<<<여기에 있는 주소 복사 >>>
-                    request_body = {'name': 'test.txt', 'parents': [folder_id]} # 업로드할 파일의 정보 정의
-                    media = MediaFileUpload('./text/test.txt') # 업로드할 파일
-                    file = service.files().create(body=request_body,media_body=media).execute()
+
                     pageControl = """<script>
                                         alert('일기 등록이 완료되었습니다.')
                                         location.href='/diaryapp/result_t_logout/'
@@ -844,10 +810,10 @@ def WC(x):
     mask = np.array(Image.open('./frequency/찐최종.png'))
     # palettes = ['twilight_shifted']
     
-    wc = WordCloud(color_func=color_func, font_path = 'C:/Users/82102/AppData/Local/Microsoft/Windows/Fonts/NanumGothicBold.ttf',max_words=1000, mask=mask, stopwords=stopwords, margin=10,
+    wc = WordCloud(color_func=color_func, font_path = 'C:/Users/user/AppData/Local/Microsoft/Windows/Fonts/NanumGothic.ttf',max_words=1000, mask=mask, stopwords=stopwords, margin=10,
             random_state=1, contour_color = 'red').generate(str_txt)
     
-    wc.to_file("C:/STUDY/final_project_diary/diaryapp/static/diaryapp/images/result.png")
+    wc.to_file("C:/STUDY/StudyPython22/Main_Project/final_project_diary/diaryapp/static/diaryapp/images/result.png")
 
 
     
